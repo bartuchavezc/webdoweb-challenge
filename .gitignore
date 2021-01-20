@@ -1,0 +1,88 @@
+## CLIENT (react app)
+
+# dependencies
+/client/node_modules
+/client/.pnp
+/client/.pnp.js
+
+# testing
+/client/coverage
+
+# production
+/client/build
+
+# misc
+/client/.DS_Store
+/client/.env.local
+/client/.env.development.local
+/client/.env.test.local
+/client/.env.production.local
+
+/client/npm-debug.log*
+
+## SERVER (nodejs with ts)
+
+## typescript build
+/server/build/
+
+# Logs
+/server/logs
+/server/*.log
+/server/npm-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+/server/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+/server/pids
+/server/*.pid
+/server/*.seed
+/server/*.pid.lock
+
+# Coverage directory used by tools like istanbul
+/server/coverage
+/server/*.lcov
+
+# nyc test coverage
+/server/.nyc_output
+
+# Bower dependency directory (https://bower.io/)
+/server/bower_components
+
+# node-waf configuration
+/server/.lock-wscript
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+/server/build/Release
+
+# Dependency directories
+/server/node_modules/
+
+# TypeScript cache
+/server/*.tsbuildinfo
+
+# Optional npm cache directory
+/server/.npm
+
+# Optional eslint cache
+/server/.eslintcache
+
+# Output of 'npm pack'
+/server/*.tgz
+
+# dotenv environment variables file
+/server/.env
+/server/.env.test
+
+# parcel-bundler cache (https://parceljs.org/)
+/server/.cache
+/server/.parcel-cache
+
+# TernJS port file
+/server/.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+/server/.vscode-test
+
+
+src_js/
