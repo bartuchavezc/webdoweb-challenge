@@ -18,7 +18,7 @@ export const bootstrap = async () => {
     process.on('uncaughtException', (error) => unhandledError(error, logger, server, serverClosing, serverStarted));
     process.on('unhandledRejection', (error) => unhandledError(error, logger, server, serverClosing, serverStarted));
 
-    // await syncDatabaseConnection();
+    await syncDatabaseConnection();
     server = initServer(logger, (started: boolean) => serverStarted = started);
-
+    
 }

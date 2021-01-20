@@ -23,7 +23,7 @@
 ## SERVER (nodejs with ts)
 
 ## typescript build
-/server/build/
+/server/dist/
 
 # Logs
 /server/logs

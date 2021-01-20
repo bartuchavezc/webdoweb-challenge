@@ -3,13 +3,13 @@ import { Server } from 'http';
 import httpErrors from 'http-errors';
 import { Logger } from 'pino';
 import pinoHttp from 'pino-http';
-import router from './app/routes';
+import { router } from './app/routes';
 import { server_config } from './config/server.config';
 
-const app = express();
-
-
 export const initServer = (logger: Logger, onStarted: Function): Server => {
+    const app = express();
+
+    app.use('/api/v1', router);
     app.use(pinoHttp({ logger }));
 
     // Common error handlers
@@ -30,16 +30,13 @@ export const initServer = (logger: Logger, onStarted: Function): Server => {
         })
     });
 
-    app.use('/api/v1', router);
+    // app.get('/', (req: any, res: any) => {
+    //     res.json('hola mundo');
+    // })
 
     // Start server
-    let server: Server = app.listen(server_config.port || 9000, () => {
+    return app.listen(server_config.port || 9000, () => {
         onStarted(true);
-        let address: any = server.address();
-            logger.info(`Server initialized in \n port: ${address.port}`);
+        logger.info(`Server initialized in port: ${server_config.port}`);
     });
-
-    return server;
 }
-
-

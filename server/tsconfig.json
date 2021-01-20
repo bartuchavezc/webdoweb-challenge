@@ -3,11 +3,19 @@
         "target": "es6",
         "module": "commonjs",
         "rootDir": "./",
-        "outDir": "./build",
+        "outDir": "./dist",
         "esModuleInterop": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
         "strict": true
     },
+    "lib": [
+        "es2015"
+    ],
     "exclude": [
-        "node_modules/*"
+        "node_modules",
+        "dist",
+        "/node_modules/@types/node/index.d.ts",
+        "**/*.spec.ts"
     ]
 }

@@ -1,18 +1,25 @@
 # Use root/example as user/password credentials
-# version: '3.1'
+version: "3.1"
 
-# services:
+services:
+  server:
+    container_name: node_server
+    build: ./server
+    command: npm run start
+    ports:
+      - 9090:4000
+    links:
+      - mongo_node
+    environment:
+      PORT: 4000
+      DB_CNN: mongodb://mongo_node/wdw
 
-#   mongo:
-#     image: mongo
-#     restart: always
-#     command: bundle mongo serve --incremental --host 0.0.0.0 --auth
-#     ports:
-#       - 9090:27017
-#     environment:
-#       MONGO_INITDB_ROOT_USERNAME: root
-#       MONGO_INITDB_ROOT_PASSWORD: root
-
+  mongo_node:
+    container_name: mongo_for_server
+    image: mongo
+    restart: always
+    ports:
+      - 7777:27017
 #   mongo-express:
 #     image: mongo-express
 #     restart: always
