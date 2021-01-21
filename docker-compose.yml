@@ -2,13 +2,26 @@
 version: "3.1"
 
 services:
-  server:
+  client:
+    container_name: react_client
+    build: ./client
+    command: npm run start
+    ports:
+      - 3000:3000
+    networks:
+      - mern_app
+    environment:
+      API_URL: http://localhost:9090/api/v1
+
+  api_server:
     container_name: node_server
     build: ./server
     command: npm run start
     ports:
       - 9090:4000
-    links:
+    networks:
+      - mern_app
+    depends_on:
       - mongo_node
     environment:
       PORT: 4000
@@ -18,13 +31,10 @@ services:
     container_name: mongo_for_server
     image: mongo
     restart: always
+    networks:
+      - mern_app
     ports:
       - 7777:27017
-#   mongo-express:
-#     image: mongo-express
-#     restart: always
-#     ports:
-#       - 8081:8081
-#     environment:
-#       ME_CONFIG_MONGODB_ADMINUSERNAME: admin
-#       ME_CONFIG_MONGODB_ADMINPASSWORD: admin
+networks: 
+  mern_app:
+    driver: bridge
