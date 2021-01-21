@@ -4,8 +4,8 @@ import { validationResult } from 'express-validator';
 export const validateRequest = (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({
-            ok: false,
+        return res.status(200).json({
+            statusCode: 400,
             errors: errors.mapped()
         });
     }

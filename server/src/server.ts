@@ -5,11 +5,12 @@ import { Logger } from 'pino';
 import pinoHttp from 'pino-http';
 import { router } from './app/routes';
 import { server_config } from './config/server.config';
+import cors from 'cors';
 
 export const initServer = (logger: Logger, onStarted: Function): Server => {
     const app = express();
-
-    app.use('/api/v1', router);
+    
+    app.use('/api/v1', cors(), router);
     app.use(pinoHttp({ logger }));
 
     // Common error handlers

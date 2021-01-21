@@ -10,6 +10,7 @@ export async function saveURL(req: Request, res: Response) {
 
     return save({ url, domain })
         .then((data) => res.json({
+            statusCode: 200,
             domain: data
         }))
         .catch((e: Error) => res.json({
