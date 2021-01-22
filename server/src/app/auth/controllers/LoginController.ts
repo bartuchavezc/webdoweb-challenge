@@ -8,13 +8,15 @@ export default {
             const user: any = await loginService({ email, password });
 
             return res.json({
+                statusCode: 200,
                 data: {
                     token: user._meta.token
                 }
             });
 
         } catch (error) {
-            return res.status(error.status).json({
+            return res.status(200).json({
+                statusCode: error.status,
                 error: error.error.message
             })
         }

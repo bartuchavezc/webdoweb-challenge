@@ -21,7 +21,7 @@ function DomainsFetch() {
   const { status, data, error, isFetching } = useQuery(
     "domains",
     async () => {
-      const res = await axios("/track");
+      const res = await axios("/api/v1/track");
       return res.data;
     },
     { refetchInterval: fetchIntelval }

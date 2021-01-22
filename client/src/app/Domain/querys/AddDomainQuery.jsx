@@ -39,7 +39,7 @@ function DomainsFetch() {
     });
   };
 
-  const addMutation = useMutation(value => axios.post(`/track?url=${value}`));
+  const addMutation = useMutation(value => axios.post(`/api/v1/track?url=${value}`));
 
   return (
     <DomainForm

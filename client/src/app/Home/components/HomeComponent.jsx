@@ -1,8 +1,9 @@
 import React from "react";
-
 import { Center, Container, Divider } from "@chakra-ui/react";
 import { GetDomainsQuery } from "../../Domain/querys/GetDomainsQuery";
 import { AddDomainQuery } from "../../Domain/querys/AddDomainQuery";
+
+import { AuthActions } from '../../Auth/components/AuthActions';
 
 export function HomeComponent() {
   return (
@@ -15,11 +16,15 @@ export function HomeComponent() {
           <h1>TOP 3 DOMAINS</h1>
         </Center>
         <GetDomainsQuery></GetDomainsQuery>
-        <Center p="3rem">
-          <Divider w="100px" />
-        </Center>
       </Container>
-      <footer></footer>
+
+
+      <footer style={{ paddingBottom: "3rem" }}>
+          <Center p="3rem">
+            <Divider w="100px" />
+          </Center>
+          <AuthActions></AuthActions>
+        </footer>
     </Container>
   );
 }

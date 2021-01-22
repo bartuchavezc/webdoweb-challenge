@@ -1,8 +1,7 @@
 import { check } from "express-validator";
 export const LoginValidations = [
-    check("email").not().isEmpty().isEmail(),
-    check("password")
-        .not().isEmpty()
+    check("email").isEmail(),
+    check("password").notEmpty()
 ]
 
 // export const SignupValidations = [

@@ -1,19 +1,31 @@
 import './App.css';
 import * as React from 'react'
-import {
-  BrowserRouter as Router,
-  Link
-} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { HomeComponent } from './app/Home/components/HomeComponent';
+import { LoginQuery } from './app/Auth/querys/LoginQuery';
+
+import { LogoutQuery } from './app/Auth/querys/LogoutQuery';
+import { SignupQuery } from './app/Auth/querys/SignupQuery';
 
 function App() {
+  
   return (
-    <Router>
-      <Link to="/">
-        <HomeComponent></HomeComponent>
-      </Link>
-    </Router>
+      <BrowserRouter>
+        <Switch>
+
+          <Route exact path='/'>
+            <HomeComponent></HomeComponent>
+          </Route>
+
+          <Route path="/login" component={LoginQuery} />
+          <Route path="/logout" component={LogoutQuery} />
+
+          <Route path="/signup" component={SignupQuery} />
+
+        </Switch>
+
+      </BrowserRouter>
   );
 }
 

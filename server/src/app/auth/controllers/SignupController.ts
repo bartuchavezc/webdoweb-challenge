@@ -8,18 +8,19 @@ export default {
             const { fullname, email, password } = req.body;
 
             if (await GetUsersService.findUserByEmail(email)) {
-                return res.status(400).json({ error: new Error('User already exists!') })
+                return res.status(200).json({ statusCode: 400, error: 'User already exists!' })
             }
 
             const user = await SaveUserService.saveUser({ fullname, email, password });
 
             return res.json({
+                statusCode: 200,
                 data: user
             });
 
         } catch (error) {
             res.status(500).json({
-                error: new Error("Ups! something wass wrong")
+                error: "Ups! something wass wrong"
             });
         }
     }
