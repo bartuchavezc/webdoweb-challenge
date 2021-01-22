@@ -35,6 +35,6 @@ services:
       - mern_app
     ports:
       - 7777:27017
-networks: 
+networks:
   mern_app:
     driver: bridge

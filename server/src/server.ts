@@ -4,13 +4,17 @@ import httpErrors from 'http-errors';
 import { Logger } from 'pino';
 import pinoHttp from 'pino-http';
 import { router } from './app/routes';
+import { router as authRouter } from './app/auth/routes';
 import { server_config } from './config/server.config';
 import cors from 'cors';
+import { json } from 'body-parser';
 
 export const initServer = (logger: Logger, onStarted: Function): Server => {
     const app = express();
-    
-    app.use('/api/v1', cors(), router);
+    app.use(cors());
+    app.use(json());
+    app.use('/api/v1', router);
+    app.use('/auth', authRouter);
     app.use(pinoHttp({ logger }));
 
     // Common error handlers
